@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <i class="medium material-icons" style="color: #EE6E73">list</i>
+        <h2 style="margin: 10;">{{ search | title }}</h2>
+    </div>
+
+    <div class="row">
+        {% for post in final_postings %}
+            <div class="row">
+                <div class="card" >
+                    <div class="card-content">
+                        <p>{{ post.0 }}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ post.1 }}">View listing: Price {{ post.2 }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

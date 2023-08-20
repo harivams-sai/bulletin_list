@@ -1,11 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Scraper List</title>
-</head>
-<body>
-<h2>Testing to check if it works!</h2>
+{% load static %}
 
-</body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spidy Scraper</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <div class="container nav-wrapper">
+                <a href="/" class="brand-logo">Spidy Scraper</a>
+                <ul id="nav-mobile" class="right">
+                    <li><a href="/">Home</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <h3 style="text-align: center; padding: 20px;">Search Anything on Sale on Spidy Scraper!</h3>
+            <div class="row" style="display: flex">
+                <div class="col s4">
+                    <!-- Promo Content 1 -->
+                    <div class="center">
+                        <i class="large material-icons" style="color: #EE6E73">flash_on</i>
+                        <p>Fast Spidy web scraper</p>
+                        <p class="light center">Scrape away right here with a beautiful GUI.</p>
+                    </div>
+                </div>
+
+                <div class="col s4">
+                    <!-- Promo Content 2 -->
+                    <div class="center">
+                        <i class="large material-icons" style="color: orange">camera</i>
+                        <p>Filter your searches</p>
+                        <p class="light center">With built in functionality to highlight pricing.</p>
+                    </div>
+                </div>
+
+                <div class="col s4">
+                    <!-- Promo Content 3 -->
+                    <div class="center">
+                        <i class="large material-icons" style="color: blue">chrome_reader_mode</i>
+                        <p>A much appealing front-end to Craigslist Scraper</p>
+                        <p class="light center">Built for people with knack for sale!</p>
+                    </div>
+                </div>
+            </div>
+
+            <form action="{% url 'new_search' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="search" placeholder="Search">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
 </html>
